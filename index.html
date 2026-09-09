@@ -84,7 +84,7 @@ button{font:inherit}
 
 <script>
 const scenes=[...document.querySelectorAll('.scene')];
-const next=document.getElementById('next'),bar=document.getElementById('bar'),chapter=document.getElementById('chapter'),hint=document.getElementById('hint');
+const next=document.getElementById('next'),controls=document.getElementById('controls'),bar=document.getElementById('bar'),chapter=document.getElementById('chapter'),hint=document.getElementById('hint');
 let idx=0;
 
 // IMPORTANT: no timers advance scenes. Every scene changes only after the highlighted button is clicked.
@@ -95,7 +95,8 @@ function show(n){
  chapter.textContent=String(idx+1).padStart(2,'0')+' / '+String(scenes.length).padStart(2,'0');
  next.textContent=idx===0?'BEGIN THE STORY ❤️':idx===scenes.length-1?'RESTART ❤️':'TAP TO CONTINUE →';
  hint.style.display=idx===scenes.length-1?'none':'block';
- if(idx===scenes.length-1) next.style.display='none'; else next.style.display='block';
+ if(idx===scenes.length-1){next.style.display='none';controls.style.display='none'}
+ else{next.style.display='block';controls.style.display='flex'}
  window.scrollTo(0,0);
 }
 next.addEventListener('click',()=>{ if(idx===scenes.length-1){show(0)}else{show(idx+1)} });
