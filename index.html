@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#05050b">
+<meta name="description" content="A birthday surprise made with love — for Sadhu, from Baal.">
+<title>For Sadhu ❤️ — From Baal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+:root{--pink:#ff5f9e;--pink2:#ffb0d0;--glass:#100b19cc;--white:#fff9fc}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;color:var(--white);font-family:Manrope,sans-serif}
+button{font:inherit}
+#app{position:fixed;inset:0;background:#000}
+.scene{position:absolute;inset:0;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .9s ease}
+.scene.active{opacity:1;visibility:visible;pointer-events:auto}
+.art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;animation:cinema 9s ease-out both}
+.scene.active .art{animation:cinema 9s ease-out both}
+@keyframes cinema{from{transform:scale(1.07)}to{transform:scale(1)}}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,#0004 0%,transparent 45%,#0008 100%)}
+.edge{position:absolute;inset:0;box-shadow:inset 0 0 120px #000a;pointer-events:none}
+.top{position:absolute;z-index:10;top:max(14px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);display:flex;gap:8px;align-items:center}
+.pill{border:1px solid #fff3;background:#07040dcc;backdrop-filter:blur(14px);color:#fff;border-radius:999px;padding:8px 13px;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.progress{position:absolute;z-index:10;left:50%;top:0;transform:translateX(-50%);height:3px;width:min(420px,72vw);background:#fff2}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff5f9e,#c59aff);transition:.45s}
+.bottom{position:absolute;z-index:20;bottom:max(22px,env(safe-area-inset-bottom));left:0;right:0;display:flex;justify-content:center;gap:9px;padding:0 14px}
+.next{position:relative;min-width:min(280px,75vw);padding:15px 23px;border:1px solid #ffb5d466;border-radius:999px;color:#fff;font-weight:800;background:linear-gradient(100deg,#ff438f,#9b63ff);box-shadow:0 0 0 0 #ff5f9e66,0 12px 38px #0008;cursor:pointer;animation:buttonPulse 1.55s ease-in-out infinite}
+.next:after{content:"";position:absolute;inset:-5px;border-radius:999px;border:1px solid #ff9dc955;animation:ring 1.55s ease-in-out infinite;pointer-events:none}
+@keyframes buttonPulse{50%{transform:translateY(-2px);box-shadow:0 0 26px #ff5f9e55,0 14px 40px #0009}}
+@keyframes ring{50%{transform:scale(1.05);opacity:.2}100%{transform:scale(1.12);opacity:0}}
+.sound{padding:13px 16px;border:1px solid #fff2;border-radius:999px;background:#08060dcc;color:#fff;backdrop-filter:blur(14px);cursor:pointer}
+.sound.on{border-color:#ff9bc477;background:#ff5f9e22}
+.clickHint{position:absolute;z-index:12;bottom:88px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff9;white-space:nowrap;animation:hint 1.6s ease-in-out infinite}
+@keyframes hint{50%{opacity:.55;transform:translateX(-50%) translateY(-3px)}}
+.hotspots{position:absolute;z-index:8;inset:0;pointer-events:none}
+.hot{position:absolute;pointer-events:auto;border:1px solid #fff3;border-radius:18px;background:#0b0710aa;color:#fff;padding:10px 13px;backdrop-filter:blur(12px);font-size:11px;box-shadow:0 8px 30px #0005;cursor:pointer;opacity:.95}
+.hot:hover{background:#ff5f9e33}
+.note{position:absolute;z-index:15;left:50%;bottom:120px;transform:translateX(-50%);max-width:85vw;text-align:center;padding:12px 17px;border:1px solid #ff9bc444;border-radius:18px;background:#0b0710dd;backdrop-filter:blur(15px);font-size:13px;opacity:0;pointer-events:none;transition:.35s}.note.show{opacity:1}
+.secret{position:fixed;z-index:100;inset:0;display:grid;place-items:center;padding:22px;background:#000e;opacity:0;visibility:hidden;transition:.45s}.secret.show{opacity:1;visibility:visible}
+.box{width:min(650px,92vw);padding:32px 24px;border:1px solid #ff9bc455;border-radius:30px;text-align:center;background:radial-gradient(circle at 50% 0,#3b1835,#0c0812 70%);box-shadow:0 0 90px #ff4d9630}
+.box .gift{font-size:68px;animation:float 2s ease-in-out infinite}.box h2{font:600 clamp(38px,10vw,60px) "Cormorant Garamond";margin:8px 0}.box p{font:500 clamp(22px,5vw,30px) "Cormorant Garamond";line-height:1.1;color:#ffe6f0}
+.close{padding:12px 20px;border:0;border-radius:999px;color:white;background:linear-gradient(90deg,#ff4d91,#9566ff);font-weight:800;cursor:pointer}
+@keyframes float{50%{transform:translateY(-9px) rotate(2deg)}}
+@media(max-width:600px){.art{object-position:center}.bottom{flex-direction:row}.sound{padding:12px 14px}.next{min-width:0;flex:1}.hot{font-size:10px;padding:8px 10px}}
+</style>
+</head>
+<body>
+<div id="app">
+<div class="progress"><i id="bar"></i></div>
+<div class="top"><div class="pill" id="chapter">01 / 09</div></div>
+
+<section class="scene active" data-name="Mystery"><img class="art" src="images/01_mystery.png"><div class="shade"></div><div class="edge"></div></section>
+<section class="scene" data-name="Someone"><img class="art" src="images/02_girl.png"><div class="shade"></div><div class="edge"></div></section>
+<section class="scene" data-name="Birthday"><img class="art" src="images/03_birthday.png"><div class="shade"></div><div class="edge"></div></section>
+<section class="scene" data-name="Alibaug"><img class="art" src="images/04_alibaug.png"><div class="shade"></div><div class="edge"></div></section>
+
+<section class="scene" data-name="Memories">
+<img class="art" src="images/05_memories.png"><div class="shade"></div><div class="edge"></div>
+<div class="hotspots">
+<button class="hot" style="left:7%;top:26%" data-note="The sea, the sunset… and us. 🌊">🌊 Alibaug</button>
+<button class="hot" style="right:7%;top:26%" data-note="One chai somehow becomes a whole conversation. ☕">☕ Rajeshwari</button>
+<button class="hot" style="left:7%;bottom:25%" data-note="Bun maska = scientifically proven happiness. 🍞">🍞 Bun maska</button>
+<button class="hot" style="right:7%;bottom:25%" data-note="Weekend Nadi Patra: no topic too random. 😂">😂 Nadi Patra</button>
+</div><div id="note" class="note"></div>
+</section>
+
+<section class="scene" data-name="Dream"><img class="art" src="images/06_dream.png"><div class="shade"></div><div class="edge"></div></section>
+<section class="scene" data-name="Future"><img class="art" src="images/07_future.png"><div class="shade"></div><div class="edge"></div></section>
+<section class="scene" data-name="Reveal"><img class="art" src="images/08_reveal.png"><div class="shade"></div><div class="edge"></div></section>
+<section class="scene" data-name="Final">
+<img class="art" src="images/09_final.png"><div class="shade"></div><div class="edge"></div>
+<button id="last" class="next" style="position:absolute;z-index:30;left:50%;bottom:24px;transform:translateX(-50%)">ONE LAST THING… ✨</button>
+</section>
+
+<div class="clickHint" id="hint">tap the glowing button to continue</div>
+<div class="bottom" id="controls"><button class="sound" id="sound">♫ sound off</button><button class="next" id="next">BEGIN THE STORY ❤️</button></div>
+
+<div class="secret" id="secret">
+<div class="box">
+<div class="gift">🎁❤️</div><h2>One last promise?</h2>
+<p>Promise me we'll keep collecting stupid little memories together.<br><br>More Alibaug. More chai. More bun maska. More nonsense. More dreams.<br><br><strong>More of us. Always. ❤️</strong></p>
+<button class="close" id="close">come here 🫂</button>
+</div></div>
+</div>
+
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const next=document.getElementById('next'),bar=document.getElementById('bar'),chapter=document.getElementById('chapter'),hint=document.getElementById('hint');
+let idx=0;
+
+// IMPORTANT: no timers advance scenes. Every scene changes only after the highlighted button is clicked.
+function show(n){
+ idx=Math.max(0,Math.min(n,scenes.length-1));
+ scenes.forEach((s,i)=>s.classList.toggle('active',i===idx));
+ bar.style.width=(idx/(scenes.length-1)*100)+'%';
+ chapter.textContent=String(idx+1).padStart(2,'0')+' / '+String(scenes.length).padStart(2,'0');
+ next.textContent=idx===0?'BEGIN THE STORY ❤️':idx===scenes.length-1?'RESTART ❤️':'TAP TO CONTINUE →';
+ hint.style.display=idx===scenes.length-1?'none':'block';
+ if(idx===scenes.length-1) next.style.display='none'; else next.style.display='block';
+ window.scrollTo(0,0);
+}
+next.addEventListener('click',()=>{ if(idx===scenes.length-1){show(0)}else{show(idx+1)} });
+document.querySelectorAll('.hot').forEach(b=>b.addEventListener('click',e=>{
+ const n=document.getElementById('note'); n.textContent=b.dataset.note; n.classList.add('show'); clearTimeout(window.nt); window.nt=setTimeout(()=>n.classList.remove('show'),2300);
+}));
+
+// Final secret.
+document.getElementById('last').addEventListener('click',()=>document.getElementById('secret').classList.add('show'));
+document.getElementById('close').addEventListener('click',()=>document.getElementById('secret').classList.remove('show'));
+
+// Original, copyright-free melody made entirely with Web Audio.
+// It begins only after the user taps the sound control.
+let ac=null, master=null, loopTimer=null, melodyOn=false;
+const notes={C4:261.63,D4:293.66,E4:329.63,G4:392.00,A4:440.00,B4:493.88,C5:523.25};
+const phrase=[['C4',.42],['E4',.42],['G4',.52],['E4',.42],['A4',.52],['G4',.42],['E4',.62],['D4',.42],['G4',.52],['B4',.52],['C5',.72],['G4',.62]];
+function tone(freq,start,dur,type='sine',vol=.055){
+ const o=ac.createOscillator(),g=ac.createGain(); o.type=type;o.frequency.setValueAtTime(freq,start);
+ g.gain.setValueAtTime(.0001,start);g.gain.exponentialRampToValueAtTime(vol,start+.035);g.gain.exponentialRampToValueAtTime(.0001,start+dur);
+ o.connect(g);g.connect(master);o.start(start);o.stop(start+dur+.03);
+}
+function playPhrase(){
+ if(!ac||!melodyOn)return;
+ const now=ac.currentTime+.05; let t=now;
+ phrase.forEach(([n,d],i)=>{tone(notes[n],t,d*.88,'triangle',.045); if(i%4===0)tone(notes[n]/2,t,d*.75,'sine',.018);t+=d});
+ loopTimer=setTimeout(playPhrase, (t-now)*1000+250);
+}
+document.getElementById('sound').addEventListener('click',async()=>{
+ const btn=document.getElementById('sound');
+ if(!ac){ac=new (window.AudioContext||window.webkitAudioContext)();master=ac.createGain();master.gain.value=.55;master.connect(ac.destination)}
+ if(ac.state==='suspended')await ac.resume();
+ melodyOn=!melodyOn;
+ if(melodyOn){btn.textContent='♫ melody on';btn.classList.add('on');playPhrase()}
+ else{btn.textContent='♫ sound off';btn.classList.remove('on');clearTimeout(loopTimer)}
+});
+show(0);
+</script>
+</body>
+</html>
