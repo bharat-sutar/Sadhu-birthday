@@ -39,6 +39,7 @@ button{font:inherit}
 .box{width:min(650px,92vw);padding:32px 24px;border:1px solid #ff9bc455;border-radius:30px;text-align:center;background:radial-gradient(circle at 50% 0,#3b1835,#0c0812 70%);box-shadow:0 0 90px #ff4d9630}
 .box .gift{font-size:68px;animation:float 2s ease-in-out infinite}.box h2{font:600 clamp(38px,10vw,60px) "Cormorant Garamond";margin:8px 0}.box p{font:500 clamp(22px,5vw,30px) "Cormorant Garamond";line-height:1.1;color:#ffe6f0}
 .close{padding:12px 20px;border:0;border-radius:999px;color:white;background:linear-gradient(90deg,#ff4d91,#9566ff);font-weight:800;cursor:pointer}
+#songPlayer{position:fixed;right:14px;bottom:14px;width:1px;height:1px;opacity:0;pointer-events:none;border:0;overflow:hidden;z-index:0}
 @keyframes float{50%{transform:translateY(-9px) rotate(2deg)}}
 @media(max-width:600px){.art{object-position:center}.bottom{flex-direction:row}.sound{padding:12px 14px}.next{min-width:0;flex:1}.hot{font-size:10px;padding:8px 10px}}
 </style>
@@ -80,6 +81,7 @@ button{font:inherit}
 <p>Promise me we'll keep collecting stupid little memories together.<br><br>More Alibaug. More chai. More bun maska. More nonsense. More dreams.<br><br><strong>More of us. Always. ❤️</strong></p>
 <button class="close" id="close">come here 🫂</button>
 </div></div>
+<iframe id="songPlayer" title="Saude Bazi song" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" src="about:blank"></iframe>
 </div>
 
 <script>
@@ -108,29 +110,26 @@ document.querySelectorAll('.hot').forEach(b=>b.addEventListener('click',e=>{
 document.getElementById('last').addEventListener('click',()=>document.getElementById('secret').classList.add('show'));
 document.getElementById('close').addEventListener('click',()=>document.getElementById('secret').classList.remove('show'));
 
-// Original, copyright-free melody made entirely with Web Audio.
-// It begins only after the user taps the sound control.
-let ac=null, master=null, loopTimer=null, melodyOn=false;
-const notes={C4:261.63,D4:293.66,E4:329.63,G4:392.00,A4:440.00,B4:493.88,C5:523.25};
-const phrase=[['C4',.42],['E4',.42],['G4',.52],['E4',.42],['A4',.52],['G4',.42],['E4',.62],['D4',.42],['G4',.52],['B4',.52],['C5',.72],['G4',.62]];
-function tone(freq,start,dur,type='sine',vol=.055){
- const o=ac.createOscillator(),g=ac.createGain(); o.type=type;o.frequency.setValueAtTime(freq,start);
- g.gain.setValueAtTime(.0001,start);g.gain.exponentialRampToValueAtTime(vol,start+.035);g.gain.exponentialRampToValueAtTime(.0001,start+dur);
- o.connect(g);g.connect(master);o.start(start);o.stop(start+dur+.03);
-}
-function playPhrase(){
- if(!ac||!melodyOn)return;
- const now=ac.currentTime+.05; let t=now;
- phrase.forEach(([n,d],i)=>{tone(notes[n],t,d*.88,'triangle',.045); if(i%4===0)tone(notes[n]/2,t,d*.75,'sine',.018);t+=d});
- loopTimer=setTimeout(playPhrase, (t-now)*1000+250);
-}
-document.getElementById('sound').addEventListener('click',async()=>{
+// Bollywood "Saude Bazi" song toggle.
+const songPlayer=document.getElementById('songPlayer');
+const songId='CxAWKewvooo';
+let songOn=false;
+function setSongState(on){
+ if(!songPlayer)return;
+ songOn=on;
  const btn=document.getElementById('sound');
- if(!ac){ac=new (window.AudioContext||window.webkitAudioContext)();master=ac.createGain();master.gain.value=.55;master.connect(ac.destination)}
- if(ac.state==='suspended')await ac.resume();
- melodyOn=!melodyOn;
- if(melodyOn){btn.textContent='♫ melody on';btn.classList.add('on');playPhrase()}
- else{btn.textContent='♫ sound off';btn.classList.remove('on');clearTimeout(loopTimer)}
+ if(on){
+   songPlayer.src='https://www.youtube.com/embed/'+songId+'?autoplay=1&controls=0&loop=1&playlist='+songId+'&rel=0&modestbranding=1';
+   btn.textContent='♫ Saude Bazi on';
+   btn.classList.add('on');
+ } else {
+   songPlayer.src='about:blank';
+   btn.textContent='♫ sound off';
+   btn.classList.remove('on');
+ }
+}
+document.getElementById('sound').addEventListener('click',()=>{
+ setSongState(!songOn);
 });
 show(0);
 </script>
