@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>For Sadhu ❤️</title>
+<style>
+*{box-sizing:border-box} html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#090414;color:#fff}
+body{overflow-x:hidden}.bg{position:fixed;inset:0;overflow:hidden;z-index:-2;background:radial-gradient(circle at 50% 20%,#40115c 0,#170725 38%,#07020e 100%)}
+.blob{position:absolute;border-radius:50%;filter:blur(55px);opacity:.55;animation:float 8s ease-in-out infinite}
+.b1{width:45vw;height:45vw;background:#ff3f9f;left:-15vw;top:5vh}.b2{width:40vw;height:40vw;background:#7b3cff;right:-12vw;top:35vh;animation-delay:-3s}.b3{width:35vw;height:35vw;background:#ff6b35;left:30vw;bottom:-18vh;animation-delay:-5s}
+@keyframes float{50%{transform:translate(25px,-30px) scale(1.08)}}
+#app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{width:min(720px,100%);text-align:center}
+.kicker{letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;opacity:.7}
+h1{font-size:clamp(2.5rem,12vw,5.8rem);line-height:.95;margin:16px 0 10px}
+.gradient{background:linear-gradient(90deg,#fff,#ff9bd4,#ffd6ee,#fff);-webkit-background-clip:text;color:transparent}
+.sub{font-size:1.05rem;opacity:.85}
+button{border:0;border-radius:999px;padding:15px 24px;font-size:1rem;font-weight:800;cursor:pointer;background:#fff;color:#210b2f;box-shadow:0 10px 35px #0007;transition:.2s}
+button:active{transform:scale(.96)}
+.screen{display:none;animation:in .65s ease}.screen.active{display:block}
+@keyframes in{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:none}}
+.orb{width:min(70vw,300px);height:min(70vw,300px);margin:20px auto 28px;position:relative}
+.orb:before{content:"";position:absolute;inset:12%;border-radius:50%;background:conic-gradient(from 0deg,#ff4ca5,#8f55ff,#35d7ff,#ff4ca5);filter:blur(1px);animation:spin 5s linear infinite}
+.orb:after{content:"❤️";position:absolute;inset:22%;border-radius:50%;display:grid;place-items:center;font-size:clamp(3rem,15vw,6rem);background:radial-gradient(circle at 35% 30%,#fff5,#ff4ca5 45%,#7c1e9c 100%);box-shadow:0 0 70px #ff4ca588, inset -20px -20px 50px #0005;animation:pulse 1.7s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}} @keyframes pulse{50%{transform:scale(1.06);box-shadow:0 0 110px #ff4ca5aa,inset -20px -20px 50px #0005}}
+.message{text-align:left;background:#ffffff10;border:1px solid #ffffff1c;border-radius:28px;padding:25px;backdrop-filter:blur(14px);line-height:1.7}
+.message p{margin:0 0 16px}.message p:last-child{margin:0}
+.quote{font-size:1.35rem;font-weight:800;text-align:center;line-height:1.35;margin:24px 0}
+.pill{display:inline-block;padding:7px 13px;border:1px solid #fff3;border-radius:999px;background:#fff1;font-size:.82rem;margin:4px}
+.final{font-size:clamp(2rem,9vw,4.5rem);font-weight:950;line-height:1.05;margin:25px 0}
+.small{opacity:.65;font-size:.85rem}
+#burst{position:fixed;inset:0;pointer-events:none;z-index:10}
+.conf{position:absolute;width:8px;height:16px;border-radius:2px;animation:fall 1.8s linear forwards}
+@keyframes fall{to{transform:translate(var(--x),110vh) rotate(720deg);opacity:0}}
+.heart{position:fixed;bottom:-30px;font-size:24px;animation:rise 4s linear forwards;pointer-events:none}
+@keyframes rise{to{transform:translateY(-115vh) rotate(20deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="bg"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i></div>
+<div id="burst"></div>
+<main id="app">
+  <section class="card screen active" id="s1">
+      <div class="kicker">⚠️ A very important message</div>
+          <div class="orb"></div>
+              <h1 class="gradient">Sadhu…<br>DON'T PANIC 😂</h1>
+                  <p class="sub">Baal has prepared something suspicious for you.</p>
+                      <br><button onclick="next(2)">OPEN THE CHAOS →</button>
+                        </section>
+
+                          <section class="card screen" id="s2">
+                              <div class="kicker">Breaking news</div>
+                                  <h1 class="gradient">IT'S YOUR DAY. 🎂</h1>
+                                      <p class="quote">The universe officially has one more year of dealing with you. 😂❤️</p>
+                                          <span class="pill">Cute</span><span class="pill">Irritating</span><span class="pill">Mine ❤️</span>
+                                              <br><br><button onclick="next(3); confetti()">There is MORE →</button>
+                                                </section>
+
+                                                  <section class="card screen" id="s3">
+                                                      <div class="orb"></div>
+                                                          <h1 class="gradient">My Favourite Sadhu ❤️</h1>
+                                                              <div class="message">
+                                                                    <p>Happy Birthday, my pillu. 🥹❤️</p>
+                                                                          <p>आपल्या दोघांबद्दल विचार केला की मला मोठ्या गोष्टींपेक्षा आपले छोटे-छोटे moments जास्त आठवतात… random hangouts, weekend Nadi Patra conversations, bun maska, Rajeshwari chai ☕ आणि काहीही कारण नसताना एकमेकांना irritate करणं. 😂</p>
+                                                                                <p>या सगळ्या छोट्या गोष्टी कधी आपल्या story चा सगळ्यात सुंदर भाग बनल्या, कळलंच नाही.</p>
+                                                                                      <p>आपली Alibaug trip ❤️, तुझ्यासोबत घालवलेला प्रत्येक weekend आणि माझ्या dreams मध्ये तू ज्या पद्धतीने सहभागी झालीस… हे सगळं माझ्यासाठी खूप precious आहे.</p>
+                                                                                            <p>तुझ्या government job चं dream पूर्ण झालेलं मला पाहायचं आहे. तू घेत असलेली मेहनत मला दिसतेय. एक दिवस तुझा call येऊन “Baal, मला job मिळाली!” असं तू म्हणशील… आणि त्या दिवशी तुझ्यापेक्षा जास्त proud कदाचित मीच असेन. ❤️</p>
+                                                                                                  <p>काहीही झालं तरी—good days, bad days, stress, preparation किंवा life मधलं काहीही—मी तुझ्यासोबत आहे. जशी तू माझ्या पाठीशी उभी राहिलीस, तसंच मी कायम तुझ्या पाठीशी उभा राहीन. 🫂</p>
+                                                                                                      </div>
+                                                                                                          <br><button onclick="next(4)">WAIT… ONE LAST THING 😈</button>
+                                                                                                            </section>
+
+                                                                                                              <section class="card screen" id="s4">
+                                                                                                                  <div class="kicker">Final level unlocked</div>
+                                                                                                                      <h1 class="gradient">SADHU × BAAL</h1>
+                                                                                                                          <p class="quote">More Alibaug.<br>More chai.<br>More bun maska.<br>More nonsense.<br>More dreams.<br><b>More US. ❤️</b></p>
+                                                                                                                              <button onclick="finale()">PRESS AT YOUR OWN RISK 💥</button>
+                                                                                                                                  <div id="ending"></div>
+                                                                                                                                    </section>
+                                                                                                                                    </main>
+                                                                                                                                    <script>
+                                                                                                                                    function next(n){
+                                                                                                                                         document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
+                                                                                                                                          document.getElementById('s'+n).classList.add('active');
+                                                                                                                                           window.scrollTo({top:0,behavior:'smooth'});
+                                                                                                                                    }
+                                                                                                                                    function confetti(){
+                                                                                                                                         const box=document.getElementById('burst');
+                                                                                                                                          for(let i=0;i<90;i++){
+                                                                                                                                               const e=document.createElement('i');e.className='conf';
+                                                                                                                                                  e.style.left=Math.random()*100+'vw';e.style.top='-20px';
+                                                                                                                                                     e.style.setProperty('--x',(Math.random()*50-25)+'vw');
+                                                                                                                                                        e.style.background=`hsl(${Math.random()*360},90%,70%)`;
+                                                                                                                                                           e.style.animationDelay=Math.random()*.7+'s';
+                                                                                                                                                              box.appendChild(e);setTimeout(()=>e.remove(),2600);
+                                                                                                                                          }
+                                                                                                                                    }
+                                                                                                                                    function finale(){
+                                                                                                                                         confetti();
+                                                                                                                                          for(let i=0;i<35;i++){
+                                                                                                                                               setTimeout(()=>{
+                                                                                                                                                    const h=document.createElement('div');h.className='heart';h.textContent=['❤️','💖','💗','💜','✨'][Math.floor(Math.random()*5)];
+                                                                                                                                                        h.style.left=Math.random()*100+'vw';h.style.animationDuration=(3+Math.random()*3)+'s';h.style.fontSize=(18+Math.random()*30)+'px';
+                                                                                                                                                            document.body.appendChild(h);setTimeout(()=>h.remove(),6500);
+                                                                                                                                               },i*90);
+                                                                                                                                          }
+                                                                                                                                           document.getElementById('ending').innerHTML=
+                                                                                                                                            `<div class="final">I LOVE YOU<br>SOOOOOOOOO MUCH,<br>SADHU ❤️</div>
+                                                                                                                                             <p class="quote">Maz pillu ❤️<br>Maz baal ❤️<br>Maz lekruuu 😍😘</p>
+                                                                                                                                              <p class="small">— Forever yours, Baal 🫂</p>`;
+                                                                                                                                    }
+                                                                                                                                    </script>
+                                                                                                                                    </body>
+                                                                                                                                    </html>
+                                                                                                                                               })
+                                                                                                                                          }
+                                                                                                                                    }
+                                                                                                                                          }
+                                                                                                                                    }
+                                                                                                                                    }
