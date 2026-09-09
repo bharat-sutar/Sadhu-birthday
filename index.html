@@ -112,7 +112,7 @@ document.getElementById('close').addEventListener('click',()=>document.getElemen
 
 // Local birthday background song toggle.
 const songPlayer=document.getElementById('songPlayer');
-let songOn=true;
+let songOn=!songPlayer.paused;
 function setSongState(on){
  if(!songPlayer)return;
  songOn=on;
@@ -127,9 +127,11 @@ function setSongState(on){
    btn.classList.remove('on');
  }
 }
+songPlayer.play().then(()=>setSongState(true)).catch(()=>setSongState(false));
 document.getElementById('sound').addEventListener('click',()=>{
- setSongState(!songOn);
+ setSongState(songPlayer.paused);
 });
+next.addEventListener('click',()=>setSongState(true),{once:true});
 show(0);
 </script>
 </body>
