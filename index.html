@@ -73,7 +73,7 @@ button{font:inherit}
 </section>
 
 <div class="clickHint" id="hint">tap the glowing button to continue</div>
-<div class="bottom" id="controls"><button class="sound" id="sound">♫ sound off</button><button class="next" id="next">BEGIN THE STORY ❤️</button></div>
+<div class="bottom" id="controls"><button class="sound on" id="sound">♫ Saude Bazi on</button><button class="next" id="next">BEGIN THE STORY ❤️</button></div>
 
 <div class="secret" id="secret">
 <div class="box">
@@ -81,7 +81,7 @@ button{font:inherit}
 <p>Promise me we'll keep collecting stupid little memories together.<br><br>More Alibaug. More chai. More bun maska. More nonsense. More dreams.<br><br><strong>More of us. Always. ❤️</strong></p>
 <button class="close" id="close">come here 🫂</button>
 </div></div>
-<iframe id="songPlayer" title="Saude Bazi song" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" src="about:blank"></iframe>
+<iframe id="songPlayer" title="Birthday background song" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-_fKCIzJlUQ?autoplay=1&controls=0&loop=1&playlist=-_fKCIzJlUQ&rel=0&modestbranding=1"></iframe>
 </div>
 
 <script>
@@ -110,10 +110,10 @@ document.querySelectorAll('.hot').forEach(b=>b.addEventListener('click',e=>{
 document.getElementById('last').addEventListener('click',()=>document.getElementById('secret').classList.add('show'));
 document.getElementById('close').addEventListener('click',()=>document.getElementById('secret').classList.remove('show'));
 
-// Bollywood "Saude Bazi" song toggle.
+// Birthday background song toggle.
 const songPlayer=document.getElementById('songPlayer');
-const songId='CxAWKewvooo';
-let songOn=false;
+const songId='-_fKCIzJlUQ';
+let songOn=true;
 function setSongState(on){
  if(!songPlayer)return;
  songOn=on;
