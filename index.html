@@ -81,7 +81,7 @@ button{font:inherit}
 <p>Promise me we'll keep collecting stupid little memories together.<br><br>More Alibaug. More chai. More bun maska. More nonsense. More dreams.<br><br><strong>More of us. Always. ❤️</strong></p>
 <button class="close" id="close">come here 🫂</button>
 </div></div>
-<iframe id="songPlayer" title="Birthday background song" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-_fKCIzJlUQ?autoplay=1&controls=0&loop=1&playlist=-_fKCIzJlUQ&rel=0&modestbranding=1"></iframe>
+<audio id="songPlayer" title="Birthday background song" autoplay loop preload="auto" src="saudebaazi.mp3"></audio>
 </div>
 
 <script>
@@ -110,20 +110,19 @@ document.querySelectorAll('.hot').forEach(b=>b.addEventListener('click',e=>{
 document.getElementById('last').addEventListener('click',()=>document.getElementById('secret').classList.add('show'));
 document.getElementById('close').addEventListener('click',()=>document.getElementById('secret').classList.remove('show'));
 
-// Birthday background song toggle.
+// Local birthday background song toggle.
 const songPlayer=document.getElementById('songPlayer');
-const songId='-_fKCIzJlUQ';
 let songOn=true;
 function setSongState(on){
  if(!songPlayer)return;
  songOn=on;
  const btn=document.getElementById('sound');
  if(on){
-   songPlayer.src='https://www.youtube.com/embed/'+songId+'?autoplay=1&controls=0&loop=1&playlist='+songId+'&rel=0&modestbranding=1';
+   songPlayer.play().catch(()=>{});
    btn.textContent='♫ Saude Bazi on';
    btn.classList.add('on');
  } else {
-   songPlayer.src='about:blank';
+   songPlayer.pause();
    btn.textContent='♫ sound off';
    btn.classList.remove('on');
  }
